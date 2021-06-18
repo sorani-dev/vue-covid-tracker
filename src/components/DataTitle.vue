@@ -8,16 +8,24 @@
 </template>
 
 <script>
-import moment from 'moment'
+import moment from "moment";
+import { computed } from "@vue/runtime-core";
 
 export default {
   name: "DataTitle",
   props: ["text", "dataDate"],
-  computed: {
-      timestamp() {
-          return moment(this.dataDate).format('MMM Do YYYY, h:mm:ss a')
-      }
-  }
+  setup({ dataDate }) {
+    return {
+      timestamp: computed(() => {
+        return moment(dataDate).format("MMM Do YYYY, h:mm:ss a");
+      }),
+    };
+  },
+  // computed: {
+  //     timestamp() {
+  //         return moment(this.dataDate).format('MMM Do YYYY, h:mm:ss a')
+  //     }
+  // }
 };
 </script>
 

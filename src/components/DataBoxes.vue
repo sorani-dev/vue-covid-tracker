@@ -36,11 +36,19 @@
 export default {
   name: "DataBoxes",
   props: ["stats"],
-  methods: {
-    /** @param {number} number */
-    numberWithCommas(number) {
-      return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    },
+  setup() {
+    return {
+      /** @param {number} number */
+      numberWithCommas(number) {
+        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      },
+    };
   },
+  // methods: {
+  //   /** @param {number} number */
+  //   numberWithCommas(number) {
+  //     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  //   },
+  // },
 };
 </script>

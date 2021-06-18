@@ -14,20 +14,30 @@
 </template>
 
 <script>
+import { ref } from "@vue/reactivity";
+
 export default {
   name: "CountrySelect",
   props: ["countries"],
-  data() {
-    return {
-      selected: 0,
+  setup({ countries }, { emit }) {
+    const selected = ref(0);
+    const onChange = () => {
+      const country = countries.find((item) => item.ID === selected);
+      emit("get-country", country);
     };
+    return { selected, onChange };
   },
-  methods: {
-    onChange() {
-      const country = this.countries.find((item) => item.ID === this.selected);
-      this.$emit("get-country", country);
-    },
-  },
+  // data() {
+  //   return {
+  //     selected: 0,
+  //   };
+  // },
+  // methods: {
+  //   onChange() {
+  //     const country = this.countries.find((item) => item.ID === this.selected);
+  //     this.$emit("get-country", country);
+  //   },
+  // },
 };
 </script>
 
