@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import moment from "moment";
+import dayjs from "dayjs";
 import { computed } from "@vue/runtime-core";
 
 export default {
@@ -17,7 +17,7 @@ export default {
   setup({ dataDate }) {
     return {
       timestamp: computed(() => {
-        return moment(dataDate).format("MMM Do YYYY, h:mm:ss a");
+        return dayjs(dataDate).format("MMM D YYYY, h:mm:ss a");
       }),
     };
   },
